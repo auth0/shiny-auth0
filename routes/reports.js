@@ -17,9 +17,6 @@ proxy.on('upgrade', function (req, socket, head) {
 
 /* Proxy all requests */
 router.all(/.*/, ensureLoggedIn, function(req, res, next) {
-  if(req.url.search(/^\/reports/) == 0){
-    req.url = req.url.substring(8);
-  }
   proxy.web(req, res);
 });
 
