@@ -11,10 +11,6 @@ var proxy = httpProxy.createProxyServer({
     }
 });
 
-proxy.on('upgrade', function (req, socket, head) {
-  proxy.ws(req, socket, head);
-});
-
 /* Proxy all requests */
 router.all(/.*/, ensureLoggedIn, function(req, res, next) {
   proxy.web(req, res);
