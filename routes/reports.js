@@ -11,6 +11,10 @@ var proxy = httpProxy.createProxyServer({
     }
 });
 
+proxy.on('error', function(e) {
+  console.log('Error connecting')
+});
+
 /* Proxy all requests */
 router.all(/.*/, ensureLoggedIn, function(req, res, next) {
   proxy.web(req, res);
