@@ -30,20 +30,6 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/* Proxy websockets */
-
-var proxy = httpProxy.createProxyServer({
-  target: {
-      host: process.env.SHINY_HOST,
-      port: process.env.SHINY_PORT
-    }
-});
-
-server.on('upgrade', function (req, socket, head) {
-  req.url = req.url.substring(8);
-  proxy.ws(req, socket, head);
-});
-
 /**
  * Normalize a port into a number, string, or false.
  */

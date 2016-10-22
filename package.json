@@ -1,8 +1,8 @@
 {
-  "name": "auth0-nodejs-regular-webapp-sample",
+  "name": "auth0-shiny",
   "version": "1.0.0",
-  "description": "Auth0 + NodeJS Regular WebApp seed",
-  "repository": "git://github.com/auth0/node-auth0",
+  "description": "Auth0 Shiny proxy",
+  "repository": "git://github.com/auth0/shiny-auth0",
   "author": "Auth0",
   "license": "MIT",
   "scripts": {

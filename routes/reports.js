@@ -15,11 +15,13 @@ proxy.on('error', function(e) {
   console.log('Error connecting')
 });
 
+proxy.on('proxyReq', function(proxyReq, req, res, options) {
+  proxyReq.setHeader('X-Shiny-User', req.user.nickname);
+});
+
 /* Proxy all requests */
 router.all(/.*/, ensureLoggedIn, function(req, res, next) {
   proxy.web(req, res);
 });
-
-
 
 module.exports = router;
