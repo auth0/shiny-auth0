@@ -12,7 +12,8 @@ var proxy = httpProxy.createProxyServer({
 });
 
 proxy.on('error', function(e) {
-  console.log('Error connecting')
+  console.log('Error connecting');
+  console.log(e);
 });
 
 proxy.on('proxyReq', function(proxyReq, req, res, options) {
