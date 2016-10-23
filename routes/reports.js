@@ -23,12 +23,12 @@ var setIfExists = function(proxyReq, header, value){
 }
 
 proxy.on('proxyReq', function(proxyReq, req, res, options) {
-  setIfExists(proxyReq, 'x-auth0-nickname', req.user.nickname);
-  setIfExists(proxyReq, 'x-auth0-user_id', req.user.user_id);
-  setIfExists(proxyReq, 'x-auth0-email', req.user.email);
-  setIfExists(proxyReq, 'x-auth0-name', req.user.name);
-  setIfExists(proxyReq, 'x-auth0-picture', req.user.picture);
-  setIfExists(proxyReq, 'x-auth0-locale', req.user.locale);
+  setIfExists(proxyReq, 'x-auth0-nickname', req.user._json.nickname);
+  setIfExists(proxyReq, 'x-auth0-user_id', req.user._json.user_id);
+  setIfExists(proxyReq, 'x-auth0-email', req.user._json.email);
+  setIfExists(proxyReq, 'x-auth0-name', req.user._json.name);
+  setIfExists(proxyReq, 'x-auth0-picture', req.user._json.picture);
+  setIfExists(proxyReq, 'x-auth0-locale', req.user._json.locale);
 });
 
 /* Proxy all requests */
