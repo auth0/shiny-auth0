@@ -16,13 +16,19 @@ proxy.on('error', function(e) {
   console.log(e);
 });
 
+var setIfExists(proxyReq, header, value){
+  if(value){
+    proxyReq.setHeader(header, value);
+  }
+}
+
 proxy.on('proxyReq', function(proxyReq, req, res, options) {
-  proxyReq.setHeader('x-auth0-nickname', req.user.nickname);
-  proxyReq.setHeader('x-auth0-user_id', req.user.user_id);
-  proxyReq.setHeader('x-auth0-email', req.user.email);
-  proxyReq.setHeader('x-auth0-name', req.user.name);
-  proxyReq.setHeader('x-auth0-picture', req.user.picture);
-  proxyReq.setHeader('x-auth0-locale', req.user.locale);
+  setIfExists(proxyReq, 'x-auth0-nickname', req.user.nickname);
+  setIfExists(proxyReq, 'x-auth0-user_id', req.user.user_id);
+  setIfExists(proxyReq, 'x-auth0-email', req.user.email);
+  setIfExists(proxyReq, 'x-auth0-name', req.user.name);
+  setIfExists(proxyReq, 'x-auth0-picture', req.user.picture);
+  setIfExists(proxyReq, 'x-auth0-locale', req.user.locale);
 });
 
 /* Proxy all requests */
