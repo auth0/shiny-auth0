@@ -16,7 +16,7 @@ proxy.on('error', function(e) {
   console.log(e);
 });
 
-var setIfExists(proxyReq, header, value){
+var setIfExists = function(proxyReq, header, value){
   if(value){
     proxyReq.setHeader(header, value);
   }
