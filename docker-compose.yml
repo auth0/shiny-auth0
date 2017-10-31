@@ -11,3 +11,5 @@ web:
     - .env
 sampler:
   image: docker.int.bluelabs.io/bluelabsio/sampler:latest
+  ports:
+    - "3838:3838"
