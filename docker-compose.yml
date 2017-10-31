@@ -9,7 +9,7 @@ web:
     - sampler
   environment:
     SHINY_HOST: sampler
-  # env_file:
-    # - .env
+  env_file:
+    - .env
 sampler:
   image: docker.int.bluelabs.io/bluelabsio/sampler:latest
