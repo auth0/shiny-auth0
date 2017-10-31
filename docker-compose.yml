@@ -1,0 +1,13 @@
+web:
+  build: .
+  command: [ "npm", "start" ]
+  volumes:
+    - .:/usr/src/app
+  ports:
+    - "3000:3000"
+  links:
+    - sampler
+  env_file:
+    - .env
+sampler:
+  image: docker.int.bluelabs.io/bluelabsio/sampler:latest
