@@ -5,10 +5,11 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn()
 var router = express.Router();
 
 var proxy = httpProxy.createProxyServer({
-  target: {
-      host: process.env.SHINY_HOST,
-      port: process.env.SHINY_PORT
-    }
+  target: `http://${process.env.SHINY_HOST}:${process.env.SHINY_PORT}/sampler/`, 
+  // {
+  //     host: process.env.SHINY_HOST,
+  //     port: process.env.SHINY_PORT,
+  //   }
 });
 
 proxy.on('error', function(e) {
