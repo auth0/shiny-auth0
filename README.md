@@ -1,7 +1,7 @@
 # Auth0 + Shiny proxy
 This server proxies a shiny instance protecting it with Auth0
 
-#Running the proxy
+## Running the proxy
 In order to run this proxy you need to have npm and nodejs installed.
 
 You also need to set the ClientSecret, ClientId and Domain for your Auth0 app as environment variables with the following names respectively: `AUTH0_CLIENT_SECRET`, `AUTH0_CLIENT_ID` and `AUTH0_DOMAIN`.
