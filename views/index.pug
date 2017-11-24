@@ -1,22 +1,19 @@
 extends layout
 
 block content
-  script(src="https://cdn.auth0.com/js/lock/10.7.2/lock.min.js")
+  script(src="https://cdn.auth0.com/js/auth0/9.0.0-beta.5/auth0.min.js")
 
   h1= title
   p Welcome to #{title}
   br
 
   script.
-    var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}', {
-      auth: {
-        redirectUrl: '#{env.AUTH0_CALLBACK_URL}',
-        responseType: 'code',
-        params: {
-          scope: 'openid profile' // Learn about scopes: https://auth0.com/docs/scopes
-        },
-        closable: false,
-        autofocus: true
-      }
+    var auth0 = new window.auth0.WebAuth({
+      clientID: '#{env.AUTH0_CLIENT_ID}',
+      domain: '#{env.AUTH0_DOMAIN}',
+      scope: "openid profile", // Learn about scopes: https://auth0.com/docs/scopes
+      responseType: "code",
+      redirectUri: '#{env.AUTH0_CALLBACK_URL}'
     });
-    lock.show();
+
+    auth0.authorize();
