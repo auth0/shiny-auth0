@@ -4,7 +4,7 @@ web:
   volumes:
     - .:/usr/src/app
   ports:
-    - "80:3000"
+    - "3000:3000"
   links:
     - sampler
   environment:
