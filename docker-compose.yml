@@ -1,5 +1,7 @@
 web:
-  build: .
+  image: docker.int.bluelabs.io/shiny-auth0:latest
+  # For local development, use the build instead of image
+  # build: .
   command: [ "npm", "start" ]
   volumes:
     - .:/usr/src/app
