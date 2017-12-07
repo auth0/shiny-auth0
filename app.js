@@ -9,7 +9,11 @@ var dotenv = require('dotenv')
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 
-dotenv.load();
+// If AUTH0_DOMAIN isn't set in our environment, we probably
+// want to load everything from the .env file.
+if (!process.env.AUTH0_DOMAIN) {
+  dotenv.load();
+}
 
 var routes = require('./routes/index');
 var sampler = require('./routes/sampler');
