@@ -4,6 +4,19 @@ This server proxies a shiny instance protecting it with Auth0.
 
 We use it to stick a couple of Shiny apps behind Auth0 authentication.
 
+## Testing
+
+To test:
+
+Set up a `.env` file based on `.env.example`.
+
+Now run:
+
+```sh
+npm install
+docker-compose up -d
+```
+
 ## This stuff below here is from the original README
 
 #### Running the proxy
