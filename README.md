@@ -26,7 +26,7 @@ Once you've set those 3 environment variables, just run `npm start` and try call
 
 For further customization you can add the following variables to your `.env` file
 
-```
+```bash
 # Auto login if the session exists on Auth0 Server
 CHECK_SESSION=true
 # When logout is called, log the user out of Auth0 aswell
