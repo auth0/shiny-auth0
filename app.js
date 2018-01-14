@@ -14,6 +14,15 @@ dotenv.load();
 var routes = require('./routes/index');
 var reports = require('./routes/reports');
 
+// Default everything to false
+process.env.CHECK_SESSION = process.env.CHECK_SESSION || 'false';
+process.env.LOGOUT_AUTH0 = process.env.LOGOUT_AUTH0 || 'false';
+process.env.LOGOUT_FEDERATED = process.env.FEDERATED || 'false';
+
+if (process.env.LOGOUT_FEDERATED === 'true') {
+  process.env.LOGOUT_AUTH0 = 'true';
+}
+
 // This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
     domain:       process.env.AUTH0_DOMAIN,
