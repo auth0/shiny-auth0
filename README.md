@@ -18,6 +18,20 @@ COOKIE_SECRET=somethingRandomHerePlease
 SHINY_HOST=localhost
 SHINY_PORT=3838
 PORT=3000
+LOGOUT_URL=https://my.url.com/afterLogout
 ````
 
 Once you've set those 3 environment variables, just run `npm start` and try calling [http://localhost:3000/](http://localhost:3000/)
+
+
+For further customization you can add the following variables to your `.env` file
+
+```bash
+# Auto login if the session exists on Auth0 Server
+CHECK_SESSION=true
+# When logout is called, log the user out of Auth0 aswell
+LOGOUT_AUTH0=true
+# When logging out is called, must logout of remote idp aswell
+# This will force LOGOUT_AUTH0 to true
+LOGOUT_FEDERATED=true
+```
