@@ -10,7 +10,6 @@ var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 
 dotenv.load();
-
 var routes = require('./routes/index');
 var reports = require('./routes/reports');
 
@@ -56,8 +55,10 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(session({
+  store: new (require('connect-pg-simple')(session))(),
   secret: process.env.COOKIE_SECRET,
   resave: true,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, 
   saveUninitialized: true
 }));
 app.use(passport.initialize());
@@ -70,7 +71,8 @@ app.use('/', routes);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// catch 404 and forward to error handler
+
+
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -101,5 +103,45 @@ app.use(function(err, req, res, next) {
   });
 });
 
+/*
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://allovue.auth0.com/api/v2/tickets/email-verification',
+  headers: { authorization: 'Bearer process.env.API_ACCESS_TOKEN' },
+  body: 
+   { result_url: process.env.AUTH0_CALLBACK_URL,
+     user_id: 'user_id',
+     ttl_sec: 0 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+
+var request = require("request");
+
+var options = { method: 'POST',
+  url: 'https://allovue.auth0.com/api/v2/tickets/password-change',
+  headers: { authorization: 'Bearer process.env.API_ACCESS_TOKEN' },
+  body: 
+   { result_url: process.env.AUTH0_CALLBACK_URL,
+     user_id: 'user_id',
+     new_password: 'secret',
+     connection_id: 'con_0000000000000001',
+     email: 'EMAIL',
+     ttl_sec: 0 },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  console.log(body);
+});
+*/
 
 module.exports = app;
+
+

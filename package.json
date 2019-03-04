@@ -19,7 +19,8 @@
     "http-proxy": "^1.11.2",
     "morgan": "~1.6.1",
     "passport": "^0.4.0",
-    "passport-auth0": "^0.6.1",
+    "passport-auth0": "^0.6.1", 
+    "connect-pg-simple": "^5.0.0",
     "pug": "^2.0.0-beta6",
     "serve-favicon": "~2.3.0",
     "uglify-js": "^2.4.24"
