@@ -70,6 +70,13 @@ app.use('/', routes);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Shiny apps are proxied at /reports, so attempt to redirect before throwing 404
+app.use(function(req, res, next) {
+  res.redirect('/reports' + req.url);
+  next();
+
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
