@@ -20,7 +20,7 @@
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "serve-favicon": "^2.5.0",
     "uglify-js": "^2.4.24"
   }
